@@ -1,8 +1,11 @@
 package geecache
 
+import "time"
+
 // A ByteView holds an immutable view of bytes.
 type ByteView struct {
-	b []byte
+	b      []byte
+	expire time.Time //过期时间
 }
 
 // Len returns the view's length

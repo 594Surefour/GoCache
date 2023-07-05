@@ -4,8 +4,8 @@ import "container/list"
 
 // Cache is a LRU cache. It is not safe for concurrent access.
 type Cache struct {
-	maxBytes int64
-	nbytes   int64
+	maxBytes int64 //缓存容量
+	nbytes   int64 //当前缓存大小
 	ll       *list.List
 	cache    map[string]*list.Element
 	// optional and executed when an entry is purged.

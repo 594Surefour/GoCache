@@ -6,6 +6,7 @@ import (
 	"geecache/geecache/singleflight"
 	"log"
 	"sync"
+	"time"
 )
 
 // A Group is a cache namespace and associated data loaded spread over
@@ -13,10 +14,11 @@ type Group struct {
 	name      string
 	getter    Getter
 	mainCache cache
+	hotCache  cache
 	peers     PeerPicker
-	// use singleflight.Group to make sure that
-	// each key is only fetched once
-	loader *singleflight.Group
+	// use singleflight.Group to make sure that each key is only fetched once
+	loader           *singleflight.Flight
+	enptyKeyDuration time.Duration
 }
 
 // A Getter loads data for a key.
@@ -48,7 +50,7 @@ func NewGroup(name string, cacheBytes int64, getter Getter) *Group {
 		name:      name,
 		getter:    getter,
 		mainCache: cache{cacheBytes: cacheBytes},
-		loader:    &singleflight.Group{},
+		loader:    &singleflight.Flight{},
 	}
 	groups[name] = g
 	return g
