@@ -1,9 +1,9 @@
-package GeeCache
+package geecache
 
 import (
 	"fmt"
-	pb "geecache/geecachepb"
-	"geecache/singleflight"
+	pb "geecache/geecache/geecachepb"
+	"geecache/geecache/singleflight"
 	"log"
 	"sync"
 )
