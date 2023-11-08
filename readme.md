@@ -1,6 +1,6 @@
 # 实现分布式缓存GeeCache
 
-## 1 谈谈分布式缓存
+## 1 分布式缓存
 ​	第一次请求时将一些耗时操作的结果暂存，以后遇到相同的请求，直接返回暂存的数据。我想这是大部分童鞋对于缓存的理解。在计算机系统中，缓存无处不在，比如我们访问一个网页，网页和引用的 JS/CSS 等静态文件，根据不同的策略，会缓存在浏览器本地或是 CDN 服务器，那在第二次访问的时候，就会觉得网页加载的速度快了不少；比如微博的点赞的数量，不可能每个人每次访问，都从数据库中查找所有点赞的记录再统计，数据库的操作是很耗时的，很难支持那么大的流量，所以一般点赞这类数据是缓存在 Redis 服务集群中的。
 
 商业世界里，现金为王；架构世界里，缓存为王。
@@ -37,21 +37,7 @@
 
 ​	GeeCache 分7天实现，每天完成的部分都是可以独立运行和测试的，就像搭积木一样，每天实现的特性组合在一起就是最终的分布式缓存系统。每天的代码在 100 行左右。
 
-## 3 目录
 
-- 第一天：[LRU 缓存淘汰策略](https://geektutu.com/post/geecache-day1.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day1-lru)
-- 第二天：[单机并发缓存](https://geektutu.com/post/geecache-day2.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day2-single-node)
-- 第三天：[HTTP 服务端](https://geektutu.com/post/geecache-day3.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day3-http-server)
-- 第四天：[一致性哈希(Hash)](https://geektutu.com/post/geecache-day4.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day4-consistent-hash)
-- 第五天：[分布式节点](https://geektutu.com/post/geecache-day5.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day5-multi-nodes)
-- 第六天：[防止缓存击穿](https://geektutu.com/post/geecache-day6.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day6-single-flight)
-- 第七天：[使用 Protobuf 通信](https://geektutu.com/post/geecache-day7.html) | [Code - Github](https://github.com/geektutu/7days-golang/blob/master/gee-cache/day7-proto-buf)
-
-## 附 推荐阅读
-
-- [Go 语言简明教程](https://geektutu.com/post/quick-golang.html)
-- [Go Test 单元测试简明教程](https://geektutu.com/post/quick-go-test.html)
-- [Go Protobuf 简明教程](https://geektutu.com/post/quick-go-protobuf.html)
 
 
 
